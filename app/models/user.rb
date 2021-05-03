@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, 
+  devise :database_authenticatable, :registerable
+        #  :recoverable, :rememberable, :validatable, 
 
   #  Including only the user's id into the encrypted token
   def generate_jwt
