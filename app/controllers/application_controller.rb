@@ -4,6 +4,9 @@ class ApplicationController < ActionController::API
 
     respond_to :json
 
+    before_action :process_token
+    # Now whenever our app is called, it will process the token (if provided) and then take whatever action is required.
+
     private
 
     def authenticate_user!(options ={})
