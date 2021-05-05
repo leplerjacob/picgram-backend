@@ -13,6 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
   end
 
+  # created our own params in order to be able to work around devise's params
   private
   def sign_up_params 
     params.require(:user).permit(:email, :password)
