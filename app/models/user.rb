@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments
-  # has_many :friendships, dependent: :destroy
-  # has_many :friends, through: :friendships
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   # has_many :followers, as: :users 
   # has_many :following, as: :users
 
