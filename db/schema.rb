@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_06_161701) do
+=======
+ActiveRecord::Schema.define(version: 2021_05_06_180418) do
+>>>>>>> local-jacob
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +27,18 @@ ActiveRecord::Schema.define(version: 2021_05_06_161701) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "followings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "follower_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_followings_on_follower_id"
+    t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+>>>>>>> local-jacob
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id", null: false
@@ -58,5 +74,9 @@ ActiveRecord::Schema.define(version: 2021_05_06_161701) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+=======
+  add_foreign_key "followings", "users"
+>>>>>>> local-jacob
   add_foreign_key "friendships", "users"
 end
