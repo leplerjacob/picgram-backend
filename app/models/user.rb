@@ -1,16 +1,10 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
-  has_many :followings
-  has_many :followers, through: :followings, as: :followers
-  # LINE 9: NOT WORKING. See comment below for testing
-  has_many :following, through: :followings, source: :user
-  # **** TEST for LINE 9 *****
-  # initialize var. ex "jacob = User.second"
-  # then call "jacob.following". This should return the users jacob is following
-  # *** TEST ***
+  has_many :as_follower, class_name: "Following", foreign_key: "follower_id", dependent: :destroy
+  has_many :as_followed, class_name: "Following", foreign_key: "followed_id", dependent: :destroy
+  has_many :followed_by_me, through: :as_follower, source: :followed_user
+  has_many :following_me, through: :as_followed, source: :follower_user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -27,4 +21,23 @@ class User < ApplicationRecord
     )
   end
 
+  
+
+
+
+
+
+  # ****** USE TBD ****** #
+
+  # def add_friend(new_friend)
+  #   if !self.friends.include?(new_friend)
+  #     # add friend to your list
+  #     self.friends << new_friend
+  #     # add you to friend list
+  #     new_friend.friends << self
+  #     puts message: "Friend added!"
+  #   else
+  #     puts message: "Already friends"
+  #   end
+  # end
 end
