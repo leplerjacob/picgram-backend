@@ -1,3 +1,4 @@
+Following.destroy_all
 User.destroy_all
 Post.destroy_all
 Comment.destroy_all

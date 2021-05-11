@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_05_06_161701) do
-=======
 ActiveRecord::Schema.define(version: 2021_05_06_180418) do
->>>>>>> local-jacob
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,25 +23,13 @@ ActiveRecord::Schema.define(version: 2021_05_06_180418) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "followings", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_followings_on_followed_id"
     t.index ["follower_id"], name: "index_followings_on_follower_id"
-    t.index ["user_id"], name: "index_followings_on_user_id"
-  end
-
->>>>>>> local-jacob
-  create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "friend_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -59,24 +43,13 @@ ActiveRecord::Schema.define(version: 2021_05_06_180418) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.bigint "friends_id"
-    t.bigint "followers_id"
-    t.bigint "following_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["followers_id"], name: "index_users_on_followers_id"
-    t.index ["following_id"], name: "index_users_on_following_id"
-    t.index ["friends_id"], name: "index_users_on_friends_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-=======
-  add_foreign_key "followings", "users"
->>>>>>> local-jacob
-  add_foreign_key "friendships", "users"
 end

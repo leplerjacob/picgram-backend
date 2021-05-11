@@ -13,15 +13,6 @@ class UsersController < ApplicationController
         render json: user_json
     end
 
-    # def create
-    #     user = User.new(user_params)
-
-    #     if user.save
-    #         session[:user_id] = user.id
-
-    #         render jsonS
-    # end
-
     private
 
     def set_user
